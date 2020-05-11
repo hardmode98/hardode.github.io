@@ -9,8 +9,13 @@ const constraints = {
 navigator.mediaDevices.getUserMedia(constraints).
   then((stream) => {video.srcObject = stream});
 
-  const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result));
+  QCodeDecoder()
+  .decodeFromCamera(video, function(er,res){
+    console.log(res);
+    document.getElementById("result").innerHTML = res;
+  });
 
+ 
 }
 
 
