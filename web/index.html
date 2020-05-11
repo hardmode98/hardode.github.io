@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+  <script src="app.js" defer></script>
+
+
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -29,5 +35,24 @@
     }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
+  
+  <video id="video" width="640" height="480" autoplay></video>
+  <script type="module">
+    import QrScanner from './qr-scanner.min.js';
+    // do something with QrScanner
+       
+    QrScanner.WORKER_PATH = "./qr-scanner-worker.min.js";
+
+const video = document.querySelector('video');
+const constraints = {
+    video: true
+  };
+navigator.mediaDevices.getUserMedia(constraints).
+  then((stream) => {video.srcObject = stream});
+
+  const qrScanner = new QrScanner(video, result => console.log('decoded qr code:', result));
+
+</script>
+ 
 </body>
 </html>
