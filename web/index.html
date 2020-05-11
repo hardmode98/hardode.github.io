@@ -71,9 +71,14 @@
 </script>
 <script src="main.dart.js" type="application/javascript"></script>
 
+
 <script type="module">
+    
     import QrScanner from "../qr-scanner.min.js";
     QrScanner.WORKER_PATH = '../qr-scanner-worker.min.js';
+
+    document.addEventListener("dog", function(event) {
+            
 
     const video = document.getElementById('qr-video');
     const camHasCamera = document.getElementById('cam-has-camera');
@@ -112,6 +117,12 @@
             .then(result => setResult(fileQrResult, result))
             .catch(e => setResult(fileQrResult, e || 'No QR code found.'));
     });
+    });
+
+</script>
+
+<script type="module">
+
 
 </script>
 </body>
